@@ -1,0 +1,16 @@
+name: Manual test
+on:
+  workflow_dispatch:
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Say hi
+        run: |
+          echo "Hello world"
+  
