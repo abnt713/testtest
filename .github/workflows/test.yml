@@ -19,7 +19,11 @@ jobs:
           echo "Hello world"
       - name: Export envvars
         run: |
-          echo "TRIGGER=triggered" >> $GITHUB_ENV
+          if [[ ${{ github.event_name }} == workflow_dispatch ]]; then
+            echo "TRIGGER=directly" >> $GITHUB_ENV
+          else
+            echo "TRIGGER=pushed" >> $GITHUB_ENV
+          fi
       - name: Echo the event
         env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
