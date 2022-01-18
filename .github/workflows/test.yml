@@ -19,7 +19,7 @@ jobs:
           echo "Hello world"
       - name: Export envvars
         run: |
-          if [[ ${{ github.event_name }} == workflow_dispatch ]]
+          if [[ ${{ github.event_name }} == workflow_dispatch ]]; then
             echo "TRIGGER=${{ github.sha }}" >> $GITHUB_ENV
           else
             echo "TRIGGER=${{ github.ref }}" >> $GITHUB_ENV
