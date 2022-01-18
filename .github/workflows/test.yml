@@ -17,8 +17,11 @@ jobs:
       - name: Export envvars
         run: |
           echo "TRIGGER=triggered" >> $GITHUB_ENV
-      - name: Echo
+      - name: Echo the event
         env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
         run: |
           echo $EVENT_CONTEXT
+      - name: Echo the event_name
+        run: |
+          echo "event name is:" ${{ github.event_name }}
