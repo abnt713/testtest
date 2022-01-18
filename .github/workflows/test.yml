@@ -22,7 +22,8 @@ jobs:
           if [[ ${{ github.event_name }} == workflow_dispatch ]]; then
             echo "TRIGGER=${{ github.sha }}" >> $GITHUB_ENV
           else
-            echo "TRIGGER=${{ github.ref }}" >> $GITHUB_ENV
+            tagvalue=$(echo ${{ github.ref }} | rev | cut -d'/' -f1 | rev)
+            echo "TRIGGER=$tagvalue" >> $GITHUB_ENV
           fi
       - name: Echo the event
         env:
